@@ -1,0 +1,9 @@
+<ul>
+{{#each model.task as |task|}}
+  <li>
+    <h1>{{#link-to "task.details" task}}{{task.title}}{{/link-to}}</h1>
+    <button {{ action "removeTask" task.id}} >X</button>
+    <span>{{#link-to "task.edit" task}}Edit{{/link-to}}</span>
+  </li>
+{{/each}}
+</ul>

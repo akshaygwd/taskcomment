@@ -1,0 +1,11 @@
+<form>
+  <div class="form-group">
+    <label>title</label>
+    {{ input type="text" class="form-control" value=model.title placeholder="Add Task..s" }}
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    {{ textarea class="form-control" value = model.body }}
+  </div>
+  <button {{ action 'editTask' model.id }} class="btn btn-primary">Update</button>
+</form>

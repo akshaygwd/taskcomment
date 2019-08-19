@@ -1,0 +1,16 @@
+<h1>{{model.title}}</h1>
+<h1>{{model.body}}</h1>
+<form>
+  <form>
+    <ul>
+    {{#each model.allComments as |c|}}
+    <p>{{c.title}}</p>
+    {{/each}}
+    </ul>
+    <div class="form-group">
+      <label>Comment</label>
+      {{ textarea class="form-control" value = comment }}
+    </div>
+    <button {{ action 'addComment' model}} class="btn btn-primary">Add Comment</button>
+  </form>
+</form>
