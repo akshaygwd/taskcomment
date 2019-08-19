@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  editComment: false,
   actions: {
     addComment: function(task) {
       var commentData = this.get('comment');
@@ -20,6 +21,22 @@ export default Ember.Controller.extend({
       this.setProperties({
         title: '',
       });
+    },
+    editComment: function(comment) {
+      comment.set('editComment', true);
+    },
+    acceptChanges(comment) {
+      comment.set('editComment', false);
+      var newComment = comment.get('title');
+       if (Ember.isEmpty(newComment)) {
+         this.removeComment(comment);
+       } else {
+         comment.save();
+       }
+    },
+    removeComment(comment) {
+      comment.deleteRecord();
+      comment.save();
     }
   }
 });

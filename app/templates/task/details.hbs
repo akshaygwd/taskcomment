@@ -3,8 +3,13 @@
 <form>
   <form>
     <ul>
-    {{#each model.allComments as |c|}}
-    <p>{{c.title}}</p>
+    {{#each model.comments as |c|}}
+    {{#if c.editComment}}
+    {{ edit-comment class="edit" value=c.title focus-out=(action "acceptChanges" c) insert-newline=(action "acceptChanges" c) }}
+    {{else}}
+    <p {{action "editComment" c on="doubleClick" }} >{{c.title}}</p>
+    <button class="destroy" {{action "removeComment" c}}>Remove</button>
+    {{/if}}
     {{/each}}
     </ul>
     <div class="form-group">
